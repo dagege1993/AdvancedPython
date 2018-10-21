@@ -2,7 +2,7 @@
 # 甚至多进程还慢,因为线程的调度比起进程来说更加轻量级
 
 
-# 1.通过Thread类实例化
+# 1.通过Thread类实例化,适用于代码量少,逻辑不复杂的情况
 import threading
 import time
 
@@ -34,11 +34,12 @@ if __name__ == '__main__':
     print('last time:{}'.format(time.time() - start_time))
 
 
-# 2. 通过集成Thread来实现多线程
+# 2. 通过继承Thread来实现多线程
 class GetDetailHtml(threading.Thread):
     def __init__(self, name):
         super().__init__(name=name)
 
+    # 重载run方法,
     def run(self):
         print("get detail html started")
         time.sleep(2)
